@@ -122,6 +122,15 @@
   .navscroll::-webkit-scrollbar{display:none;}
   .brand{flex:none;}
   #langbtn{flex:none;}
+  #navtoggle{
+    display:none; background:none; border:1px solid var(--chip-line); color:var(--ink); border-radius:5px;
+    width:30px; height:30px; align-items:center; justify-content:center; cursor:pointer; flex:none;
+  }
+  #navtoggle:hover{border-color:var(--accent); color:var(--accent);}
+  #navtoggle svg{width:15px; height:15px; fill:currentColor;}
+  #navtoggle .icon-close{display:none;}
+  #navtoggle.open .icon-burger{display:none;}
+  #navtoggle.open .icon-close{display:block;}
 
   /* ============ Hero ============ */
   header.hero{padding:64px 0 0; position:relative; overflow:hidden;}
@@ -301,10 +310,19 @@
   #totop svg{width:16px; height:16px; fill:currentColor;}
 
   @media (max-width:640px){
-    .navlinks{font-size:11.5px; gap:14px;}
     .herobody{flex-direction:column-reverse; align-items:flex-start;}
     .avatar{width:96px; height:96px;}
     section{padding:52px 0;}
+
+    .navrow{flex-wrap:wrap;}
+    .brand{order:0;}
+    #navtoggle{display:flex; order:1;}
+    #themebtn{order:2;}
+    #langbtn{order:3;}
+    .navscroll{order:4; flex:1 1 100%; max-width:100%; display:none;}
+    .navscroll.open{display:flex;}
+    .navlinks{flex-direction:column; gap:2px; font-size:13px; padding:10px 0 6px; width:100%;}
+    .navlinks a{display:block; padding:9px 2px;}
   }
 
   /* ============ Theme toggle ============ */
@@ -361,6 +379,45 @@
     .avatar{box-shadow:none;}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "陈越",
+  "alternateName": "Chen Yue",
+  "description": "MFin candidate at the University of Glasgow seeking roles in securities research, asset management and financial markets.",
+  "url": "https://enzo71413653-web.github.io/Resume-of-Yue-Chen/",
+  "image": "https://enzo71413653-web.github.io/Resume-of-Yue-Chen/assets/avatar.jpg",
+  "email": "mailto:cy71413653@163.com",
+  "telephone": "+86-131-6108-2070",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Beijing",
+    "addressCountry": "CN"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Glasgow"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Central University of Finance and Economics"
+    }
+  ],
+  "knowsLanguage": ["zh", "en"],
+  "knowsAbout": [
+    "Securities Research",
+    "Asset Management",
+    "Financial Econometrics",
+    "Python",
+    "GARCH modelling",
+    "DCC-GARCH",
+    "Wind terminal",
+    "Bloomberg terminal"
+  ]
+}
+</script>
 </head>
 
 <body data-lang="zh">
@@ -369,7 +426,11 @@
 <nav>
   <div class="navrow">
     <div class="brand"><span class="dot"></span><span lang="zh">陈越 · 求职简历</span><span lang="en">CHEN YUE · PROFILE</span></div>
-    <div class="navscroll">
+    <button id="navtoggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navscroll">
+      <svg class="icon-burger" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24"><path d="M6.4 5L5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12 19 6.4 17.6 5 12 10.6z"/></svg>
+    </button>
+    <div class="navscroll" id="navscroll">
       <ul class="navlinks">
         <li><a href="#about"><span lang="zh">关于</span><span lang="en">About</span></a></li>
         <li><a href="#education"><span lang="zh">教育</span><span lang="en">Education</span></a></li>
@@ -442,20 +503,22 @@
     </div>
     <div class="statrow" id="statrow">
       <div class="stat">
-        <div class="statnum" data-target="5" data-decimals="0">0</div>
+        <div class="statnum" data-target="5" data-decimals="0">5</div>
         <div class="statlabel"><span lang="zh">段实习经历</span><span lang="en">Internships</span></div>
+        <div class="statbar"></div>
       </div>
       <div class="stat">
-        <div class="statnum" data-target="84.18" data-decimals="2">0</div>
+        <div class="statnum" data-target="84.18" data-decimals="2">84.18</div>
         <div class="statlabel"><span lang="zh">GPA · 专业前 6%</span><span lang="en">GPA · Top 6% of class</span></div>
         <div class="statbar"><div class="statbar-fill" data-pct="94"></div></div>
       </div>
       <div class="stat">
-        <div class="statnum" data-target="300" data-decimals="0" data-suffix="+">0</div>
+        <div class="statnum" data-target="300" data-decimals="0" data-suffix="+">300+</div>
         <div class="statlabel"><span lang="zh">客户电话回访</span><span lang="en">Client follow-up calls</span></div>
+        <div class="statbar"></div>
       </div>
       <div class="stat">
-        <div class="statnum" data-target="16.20" data-decimals="2" data-suffix="%">0</div>
+        <div class="statnum" data-target="16.20" data-decimals="2" data-suffix="%">16.20%</div>
         <div class="statlabel"><span lang="zh">模拟炒股收益率(前2.2%)</span><span lang="en">Simulated return (top 2.2%)</span></div>
         <div class="statbar"><div class="statbar-fill" data-pct="98"></div></div>
       </div>
@@ -750,6 +813,21 @@
     syncHtmlLang();
   });
 
+  // mobile nav — hamburger toggle collapses the link list below 640px
+  var navToggle = document.getElementById('navtoggle');
+  var navScroll = document.getElementById('navscroll');
+  function setNavOpen(open){
+    navScroll.classList.toggle('open', open);
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  navToggle.addEventListener('click', function(){
+    setNavOpen(!navScroll.classList.contains('open'));
+  });
+  Array.prototype.slice.call(navScroll.querySelectorAll('a')).forEach(function(a){
+    a.addEventListener('click', function(){ setNavOpen(false); });
+  });
+
   // theme toggle — manual override on top of prefers-color-scheme
   var themeBtn = document.getElementById('themebtn');
   var savedTheme = null;
@@ -879,8 +957,11 @@
     spySections.forEach(function(s){ spy.observe(s); });
   }
 
-  // animated count-up stats
+  // animated count-up stats — markup ships the real value so no-JS/crawlers
+  // see correct numbers; JS resets to 0 here (before paint) so the scroll-
+  // triggered animation still has something to count up from.
   var statEls = Array.prototype.slice.call(document.querySelectorAll('.statnum'));
+  statEls.forEach(function(el){ el.textContent = '0'; });
   function animateStat(el){
     var target = parseFloat(el.getAttribute('data-target'));
     var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
