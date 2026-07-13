@@ -243,6 +243,29 @@
   .bullets li{position:relative; padding-left:18px; margin-top:10px; font-size:15px; color:var(--ink); line-height:1.7;}
   .bullets li::before{content:"—"; position:absolute; left:0; color:var(--accent); font-family:var(--mono);}
 
+  /* dissertation spotlight */
+  .spotlight.entry{
+    background:var(--bg-raised); border:1px solid var(--chip-line); border-radius:10px;
+    padding:26px 26px 24px; box-shadow:var(--shadow);
+  }
+  .spotlight-badge{
+    display:inline-flex; align-items:center; gap:6px; font-family:var(--mono); font-size:11px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--accent-soft); margin-bottom:12px; font-weight:700;
+  }
+  .spotlight-badge::before{content:""; width:16px; height:1px; background:var(--accent-soft); display:inline-block;}
+  .spotlight-charts{display:grid; grid-template-columns:1.4fr 1fr; grid-template-rows:auto auto; gap:14px; margin-top:20px;}
+  .spotlight-charts .chart-main{grid-row:1 / 3;}
+  .spotlight-charts figure{margin:0; background:#fff; border:1px solid var(--rule); border-radius:6px; overflow:hidden;}
+  .spotlight-charts img{width:100%; display:block;}
+  .spotlight-charts figcaption{
+    font-family:var(--mono); font-size:11px; color:#5b5c5f; padding:8px 10px; line-height:1.45;
+    border-top:1px solid var(--rule); background:#faf9f6;
+  }
+  @media (max-width:640px){
+    .spotlight-charts{grid-template-columns:1fr;}
+    .spotlight-charts .chart-main{grid-row:auto;}
+  }
+
   /* experience timeline */
   .timeline{position:relative;}
   .timeline::before{
@@ -677,6 +700,39 @@
     <div class="sectionhead">
       <span class="sectionnum">04</span>
       <h2 class="h"><span lang="zh">学术研究</span><span lang="en">Academic Projects</span></h2>
+    </div>
+
+    <div class="entry spotlight reveal">
+      <div class="spotlight-badge"><span lang="zh">硕士论文亮点</span><span lang="en">Dissertation Spotlight</span></div>
+      <div class="entryhead">
+        <div>
+          <div class="entryorg"><span lang="zh">《黄金还是避险资产吗?——2020–2026年国际压力事件的实证检验》</span><span lang="en">"Is Gold Still a Safe Haven? International Evidence Across the Stress Episodes of 2020–2026"</span></div>
+          <div class="entryrole"><span lang="zh">硕士毕业论文 · 独立研究</span><span lang="en">Master's Dissertation · Independent Research</span></div>
+        </div>
+        <div class="entrydate"><span lang="zh">2025.09 – 2026.11</span><span lang="en">Sep 2025 – Nov 2026</span></div>
+      </div>
+      <ul class="bullets">
+        <li><span lang="zh">黄金平均而言对多数发达市场股票具备对冲作用:<span class="n">六个市场中五个</span>的关系为负且统计显著(GARCH(1,1)设定下)</span>
+            <span lang="en">Gold hedges most developed equity markets on average — the relationship is negative and statistically significant in <span class="n">five of six markets</span> under the GARCH(1,1) specification</span></li>
+        <li><span lang="zh">在极端下跌区间,黄金对<span class="n">标普500、富时100、STOXX 600</span>仍具统计显著的避险效应(以富时100最强),但对<span class="n">中国、新兴市场指数不成立</span>;这一保护作用能抵消发达市场尾部单日损失的<span class="n">十分之一到四分之一</span></span>
+            <span lang="en">In extreme downturns the safe-haven effect holds for <span class="n">the S&amp;P 500, FTSE 100 and STOXX 600</span> (strongest for the FTSE 100), offsetting <span class="n">a tenth to a quarter</span> of a developed-market tail-day loss — but is <span class="n">absent for China and broader emerging markets</span></span></li>
+        <li><span lang="zh">覆盖新冠疫情、俄乌战争、2025–26关税冲击<span class="n">四场性质迥异的压力事件</span>,黄金的极端避险反应在统计上保持稳定,未发现随危机类型显著变化的证据——挑战了"避险效应因危机而异"的主流叙事</span>
+            <span lang="en">Across <span class="n">four episodes of markedly different character</span> — COVID-19, the Russia&ndash;Ukraine war, and the 2025&ndash;26 tariff shocks — gold's tail-risk response shows no statistically significant instability, challenging the "crisis-dependent" narrative in prior literature</span></li>
+      </ul>
+      <div class="spotlight-charts">
+        <figure class="chart-main">
+          <img src="assets/fig3-safehaven-forest.png" alt="Forest plot of gold's safe-haven tail slope by equity market, 95% confidence intervals">
+          <figcaption><span lang="zh">各市场避险效应显著性(95%置信区间;红色=统计显著)</span><span lang="en">Safe-haven significance by market (95% CI; red = statistically significant)</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/fig1-gold-vs-equity.png" alt="Gold vs six equity indices, rebased price performance 2015-2026">
+          <figcaption><span lang="zh">黄金 vs 六大股指走势对比(2015–2026,基准=100)</span><span lang="en">Gold vs six equity indices, rebased performance (2015&ndash;2026)</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/fig2-rolling-corr.png" alt="60-day rolling correlation between gold and equities">
+          <figcaption><span lang="zh">黄金与股票的60日滚动相关性(危机区间标灰)</span><span lang="en">60-day rolling correlation, gold vs equities (crisis windows shaded)</span></figcaption>
+        </figure>
+      </div>
     </div>
 
     <div class="entry reveal">
